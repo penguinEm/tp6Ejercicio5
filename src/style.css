@@ -1,0 +1,8 @@
+.color-titulo {
+  color: #0d6dfd63;
+}
+
+.color-titulo::placeholder {
+    color: #0d6dfd63;
+}
+
