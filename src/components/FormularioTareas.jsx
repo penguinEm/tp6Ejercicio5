@@ -13,8 +13,11 @@ const FormularioTareas = () => {
     setTarea("");
   };
 
-  const borrarTarea = () => {
-    
+  const borrarTarea = (nombreTarea) => {
+    const copiaArrayTarea = arrayTareas.filter(
+      (copiaTarea) => copiaTarea !== nombreTarea
+    );
+    setArrayTarea(copiaArrayTarea);
   };
 
   return (
@@ -38,7 +41,7 @@ const FormularioTareas = () => {
           </Button>
         </Form.Group>
       </Form>
-      <ListaTareas arrayTareas={arrayTareas}></ListaTareas>
+      <ListaTareas arrayTareas={arrayTareas} borrarTarea={borrarTarea}></ListaTareas>
     </section>
   );
 };
