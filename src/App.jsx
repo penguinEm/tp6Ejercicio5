@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Navbar></Navbar>
-      <Container className="my-5">
+      <Container className="my-5 main">
         <h1 className="text-center display-3 color-titulo my-5">
           Lista de Tareas
         </h1>

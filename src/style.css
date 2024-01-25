@@ -17,3 +17,16 @@
     color: grey;
     transition: 1s;
 }
+
+/* Bajar el foot */
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.main {
+  flex-grow: 1;
+}

@@ -7,8 +7,8 @@ const Navbar = () => {
     <header>
       <nav className="navbar bg-body-tertiary">
         <Container>
-          <a className="navbar-brand gradiente" href="#">
-            <FontAwesomeIcon icon={faCubes} className="text-secondary me-1"/>
+          <a className="navbar-brand gradiente" href="../../index.html">
+            <FontAwesomeIcon icon={faCubes} className="text-secondary me-1" />
             INICIO
           </a>
         </Container>
