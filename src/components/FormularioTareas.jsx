@@ -9,12 +9,16 @@ const FormularioTareas = () => {
   const manejadorSubmit = (e) => {
     e.preventDefault();
 
-    setArrayTarea([...arrayTareas, tarea])
-    setTarea ("")
+    setArrayTarea([...arrayTareas, tarea]);
+    setTarea("");
+  };
+
+  const borrarTarea = () => {
+    
   };
 
   return (
-    <section className="rounded-5 py-5 border border-info px-lg-5 px-md-5 px-sm-1">
+    <section className="rounded-5 pt-5 border border-info px-lg-5 px-md-5 px-sm-1">
       <Form onSubmit={manejadorSubmit}>
         <Form.Group
           className="mx-2 d-flex"
@@ -27,7 +31,7 @@ const FormularioTareas = () => {
             minLength={3}
             maxLength={30}
             onChange={(e) => setTarea(e.target.value)}
-            value = {tarea}
+            value={tarea}
           />
           <Button type="submit" variant="outline-primary" className="ms-3">
             Agregar
