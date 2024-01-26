@@ -1,14 +1,22 @@
 import { Button, Form } from "react-bootstrap";
 import ListaTareas from "./ListaTareas";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const FormularioTareas = () => {
+  /* Variables */
   const [tarea, setTarea] = useState("");
-  const [arrayTareas, setArrayTarea] = useState([]);
+  const arrayTareasLocalStorage = JSON.parse(
+    localStorage.getItem("listaTareasKey")
+  ) || [];
+  const [arrayTareas, setArrayTarea] = useState(arrayTareasLocalStorage);
+
+  /* Funciones */
+  useEffect(() => {
+    localStorage.setItem("listaTareasKey", JSON.stringify(arrayTareas));
+  }, [arrayTareas]);
 
   const manejadorSubmit = (e) => {
     e.preventDefault();
-
     setArrayTarea([...arrayTareas, tarea]);
     setTarea("");
   };
@@ -20,6 +28,7 @@ const FormularioTareas = () => {
     setArrayTarea(copiaArrayTarea);
   };
 
+  /* Maquetado - lógica */
   return (
     <section className="rounded-5 pt-5 border border-info px-lg-5 px-md-5 px-sm-1">
       <Form onSubmit={manejadorSubmit}>
@@ -41,7 +50,10 @@ const FormularioTareas = () => {
           </Button>
         </Form.Group>
       </Form>
-      <ListaTareas arrayTareas={arrayTareas} borrarTarea={borrarTarea}></ListaTareas>
+      <ListaTareas
+        arrayTareas={arrayTareas}
+        borrarTarea={borrarTarea}
+      ></ListaTareas>
     </section>
   );
 };
