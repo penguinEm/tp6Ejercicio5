@@ -4,6 +4,17 @@
       "nombreTarea": "tarea1",
       "orden": "1",
       "id": "1"
+    },
+    {
+      "nombreTarea": "tarea2",
+      "orden": "1",
+      "id": "2"
+    },
+    {
+      "nombreTarea": "tarea3",
+      "orden": "1",
+      "id": "3"
     }
+
   ]
 }

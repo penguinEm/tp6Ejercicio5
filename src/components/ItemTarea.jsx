@@ -1,12 +1,12 @@
 import { Button, ListGroup } from "react-bootstrap";
 
-const ItemTarea = ({ nombreTarea, borrarTarea, contenidoTarea }) => {
+const ItemTarea = ({tarea}) => {
   return (
     <ListGroup.Item
       as="li"
       className="border border-0 d-flex justify-content-between text-primary"
     >
-      {contenidoTarea}
+      {tarea.nombreTarea}
       <Button variant="outline-danger" onClick={() => borrarTarea(nombreTarea)}>
         Borrar
       </Button>
