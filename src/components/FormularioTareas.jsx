@@ -1,37 +1,28 @@
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, FormText } from "react-bootstrap";
 import ListaTareas from "./ListaTareas";
 import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 
 const FormularioTareas = () => {
-  /* Variables */
-  const [tarea, setTarea] = useState("");
-  const arrayTareasLocalStorage = JSON.parse(
-    localStorage.getItem("listaTareasKey")
-  ) || [];
-  const [arrayTareas, setArrayTarea] = useState(arrayTareasLocalStorage);
+  /* VARIABLES GLOBALES -------------------------------------------------------------------------------------------------- */
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  /* Funciones */
-  useEffect(() => {
-    localStorage.setItem("listaTareasKey", JSON.stringify(arrayTareas));
-  }, [arrayTareas]);
-
-  const manejadorSubmit = (e) => {
-    e.preventDefault();
-    setArrayTarea([...arrayTareas, tarea]);
-    setTarea("");
+  /* FUNCIONES ------------------------------------------------------------------------------------------------------------- */
+  const tareaValidada = (tarea) => {
+    console.log(tarea)
   };
 
-  const borrarTarea = (nombreTarea) => {
-    const copiaArrayTarea = arrayTareas.filter(
-      (copiaTarea) => copiaTarea !== nombreTarea
-    );
-    setArrayTarea(copiaArrayTarea);
-  };
-
-  /* Maquetado - lógica */
+  /* Maquetado - lógica EXTRA -------------------------------------------------------------------------------------------------- */
   return (
     <section className="rounded-5 pt-5 border border-info px-lg-5 px-md-5 px-sm-1">
-      <Form onSubmit={manejadorSubmit}>
+      <Form onSubmit={handleSubmit(tareaValidada)}>
+        <FormText className="text-danger ms-3">
+          {errors.nombreTarea?.message}
+        </FormText>
         <Form.Group
           className="mx-2 d-flex"
           controlId="exampleForm.ControlInput1"
@@ -40,20 +31,26 @@ const FormularioTareas = () => {
             className="color-titulo"
             type="text"
             placeholder="Ej: tarea 1"
-            minLength={3}
-            maxLength={30}
-            onChange={(e) => setTarea(e.target.value)}
-            value={tarea}
+            {...register("nombreTarea", {
+              required: "Ingrese su tarea",
+              minLength: {
+                value: 3,
+                message:
+                  "Debe ingresar como mínimo 3 caracteres para agragar su tarea",
+              },
+              maxLength: {
+                value: 30,
+                message:
+                  "Debe ingresar como máximo 30 caracteres para agregar su tarea",
+              },
+            })}
           />
           <Button type="submit" variant="outline-primary" className="ms-3">
             Agregar
           </Button>
         </Form.Group>
       </Form>
-      <ListaTareas
-        arrayTareas={arrayTareas}
-        borrarTarea={borrarTarea}
-      ></ListaTareas>
+      <ListaTareas></ListaTareas>
     </section>
   );
 };
