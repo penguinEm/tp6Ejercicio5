@@ -42,3 +42,6 @@ import "@fortawesome/fontawesome-free/css/all.css";
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refreshsh
+
+
+<!-- npx json-server db.json -->
