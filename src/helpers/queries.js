@@ -28,3 +28,16 @@ export const crearTareaApi = async (tareaNueva) => {
     console.log("Error en el CREATE de la tarea");
   }
 };
+
+//! DELETE de una tarea por id
+
+export const borrarTareaApi = async (id) => {
+  try {
+    const respuesta = await fetch(`${URI_TAREAS}/${id}`, {
+      method: "DELETE",
+    });
+    return respuesta;
+  } catch (error) {
+    console.log("Error en el CREATE de la tarea");
+  }
+};

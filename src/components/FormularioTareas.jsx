@@ -1,4 +1,4 @@
-import { Button, Form, FormText } from "react-bootstrap";
+import { Button, Form, FormText, Alert } from "react-bootstrap";
 import ListaTareas from "./ListaTareas";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -40,12 +40,11 @@ const FormularioTareas = () => {
         icon: "success",
       });
       setTareas([...tareas, tareaNueva]);
-      console.log(tareas)
       reset();
     } else {
       Swal.fire({
         title: "Oops",
-        text: "Ocurrio un error, intente nuevamente mas tarde!",
+        text: "Ocurrió un error, inténtelo nuevamente más tarde!",
         icon: "error",
       });
     }
@@ -71,7 +70,7 @@ const FormularioTareas = () => {
               minLength: {
                 value: 3,
                 message:
-                  "Debe ingresar como mínimo 3 caracteres para agragar su tarea",
+                  "Debe ingresar como mínimo 3 caracteres para agregar su tarea",
               },
               maxLength: {
                 value: 30,
@@ -85,7 +84,13 @@ const FormularioTareas = () => {
           </Button>
         </Form.Group>
       </Form>
-      <ListaTareas tareas={tareas}></ListaTareas>
+      {tareas.length === 0 ? (
+        <Alert variant="info" className="mt-3">
+          Su listado de tareas está vacío.
+        </Alert>
+      ) : (
+        <ListaTareas tareas={tareas} setTareas={setTareas}></ListaTareas>
+      )}
     </section>
   );
 };
