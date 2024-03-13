@@ -50,7 +50,10 @@ const ItemTarea = ({ tarea, setTareas }) => {
     >
       {tarea.nombreTarea}
       <div>
-        <Link className="me-1 btn btn-outline-warning" to={"/editar"}>
+        <Link
+          className="me-1 btn btn-outline-warning"
+          to={`editar/${tarea.id}`}
+        >
           <i className="bi bi-pencil-square"></i>
         </Link>
         <Link className="btn btn-outline-danger" onClick={borrarTarea}>

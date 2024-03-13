@@ -34,6 +34,7 @@ const FormularioTareas = ({ editar, btnTexto }) => {
   const tareaValidada = async (tareaNueva) => {
     if (editar === true) {
       //todo: logica para editar
+      
     } else {
       const respuesta = await crearTareaApi(tareaNueva);
       if (respuesta.status === 201) {
