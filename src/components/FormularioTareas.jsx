@@ -2,18 +2,53 @@ import { Button, Form, FormText } from "react-bootstrap";
 import ListaTareas from "./ListaTareas";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { crearTareaApi, leerTareasApi } from "../helpers/queries";
+import Swal from "sweetalert2";
 
 const FormularioTareas = () => {
   /* VARIABLES GLOBALES -------------------------------------------------------------------------------------------------- */
+  const [tareas, setTareas] = useState([]);
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   /* FUNCIONES ------------------------------------------------------------------------------------------------------------- */
-  const tareaValidada = (tarea) => {
-    console.log(tarea)
+
+  useEffect(() => {
+    traerTareas();
+  }, []);
+
+  const traerTareas = async () => {
+    try {
+      const tareasApi = await leerTareasApi();
+      setTareas(tareasApi);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const tareaValidada = async (tareaNueva) => {
+    const respuesta = await crearTareaApi(tareaNueva);
+    if (respuesta.status === 201) {
+      Swal.fire({
+        title: "Buen trabajo!",
+        text: `Se agregó ${tareaNueva.nombreTarea} a la lista`,
+        icon: "success",
+      });
+      setTareas([...tareas, tareaNueva]);
+      console.log(tareas)
+      reset();
+    } else {
+      Swal.fire({
+        title: "Oops",
+        text: "Ocurrio un error, intente nuevamente mas tarde!",
+        icon: "error",
+      });
+    }
   };
 
   /* Maquetado - lógica EXTRA -------------------------------------------------------------------------------------------------- */
@@ -50,7 +85,7 @@ const FormularioTareas = () => {
           </Button>
         </Form.Group>
       </Form>
-      <ListaTareas></ListaTareas>
+      <ListaTareas tareas={tareas}></ListaTareas>
     </section>
   );
 };
