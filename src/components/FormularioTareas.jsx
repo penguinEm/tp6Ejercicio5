@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 import { crearTareaApi, leerTareasApi } from "../helpers/queries";
 import Swal from "sweetalert2";
 
-const FormularioTareas = () => {
-  /* VARIABLES GLOBALES -------------------------------------------------------------------------------------------------- */
+const FormularioTareas = ({ editar, btnTexto }) => {
+  //! VARIABLES GLOBALES --------------------------------------------------------------------------------------------------
   const [tareas, setTareas] = useState([]);
 
   const {
@@ -16,7 +16,7 @@ const FormularioTareas = () => {
     formState: { errors },
   } = useForm();
 
-  /* FUNCIONES ------------------------------------------------------------------------------------------------------------- */
+  //! FUNCIONES -------------------------------------------------------------------------------------------------------------
 
   useEffect(() => {
     traerTareas();
@@ -32,27 +32,31 @@ const FormularioTareas = () => {
   };
 
   const tareaValidada = async (tareaNueva) => {
-    const respuesta = await crearTareaApi(tareaNueva);
-    if (respuesta.status === 201) {
-      Swal.fire({
-        title: "Buen trabajo!",
-        text: `Se agregó ${tareaNueva.nombreTarea} a la lista`,
-        icon: "success",
-      });
-      setTareas([...tareas, tareaNueva]);
-      reset();
+    if (editar === true) {
+      //todo: logica para editar
     } else {
-      Swal.fire({
-        title: "Oops",
-        text: "Ocurrió un error, inténtelo nuevamente más tarde!",
-        icon: "error",
-      });
+      const respuesta = await crearTareaApi(tareaNueva);
+      if (respuesta.status === 201) {
+        Swal.fire({
+          title: "Buen trabajo!",
+          html: `Se agregó <span class="text-primary fw-bold">${tareaNueva.nombreTarea}</span> a la lista`,
+          icon: "success",
+        });
+        setTareas([...tareas, tareaNueva]);
+        reset();
+      } else {
+        Swal.fire({
+          title: "Oops",
+          text: "Ocurrió un error, inténtelo nuevamente más tarde!",
+          icon: "error",
+        });
+      }
     }
   };
 
-  /* Maquetado - lógica EXTRA -------------------------------------------------------------------------------------------------- */
+  //! Maquetado - lógica EXTRA --------------------------------------------------------------------------------------------------
   return (
-    <section className="rounded-5 pt-5 border border-info px-lg-5 px-md-5 px-sm-1">
+    <section className="rounded-5 pt-5 border border-info px-lg-5 px-md-5 px-sm-1 container">
       <Form onSubmit={handleSubmit(tareaValidada)}>
         <FormText className="text-danger ms-3">
           {errors.nombreTarea?.message}
@@ -79,8 +83,12 @@ const FormularioTareas = () => {
               },
             })}
           />
-          <Button type="submit" variant="outline-primary" className="ms-3">
-            Agregar
+          <Button
+            type="submit"
+            variant={editar === true ? "warning" : "primary"}
+            className="ms-3"
+          >
+            {btnTexto}
           </Button>
         </Form.Group>
       </Form>

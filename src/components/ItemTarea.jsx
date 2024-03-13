@@ -2,6 +2,7 @@ import { Button, ListGroup } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { borrarTareaApi, leerTareasApi } from "../helpers/queries";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const ItemTarea = ({ tarea, setTareas }) => {
   /* FUNCIONES ------------------------------------------------------------------------------------------------------ */
@@ -15,8 +16,7 @@ const ItemTarea = ({ tarea, setTareas }) => {
 
   const borrarTarea = async () => {
     Swal.fire({
-      title: `¿Estas seguro que desea borrar: ${tarea.nombreTarea}?`,
-      text: "Este paso no se puede revertir",
+      html: `¿Estas seguro que desea borrar:<span class="text-danger fw-bold"> ${tarea.nombreTarea}</span>?`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -29,7 +29,7 @@ const ItemTarea = ({ tarea, setTareas }) => {
         if (respuesta.status === 200) {
           setTareas(await leerTareasApi());
           Swal.fire({
-            title: `Tarea: ${tarea.nombreTarea} borrada!`,
+            html: `Tarea: <span class="text-danger fw-bold">${tarea.nombreTarea}</span> borrada!`,
             icon: "success",
           });
         } else {
@@ -50,12 +50,12 @@ const ItemTarea = ({ tarea, setTareas }) => {
     >
       {tarea.nombreTarea}
       <div>
-        <Button className="me-1" variant="outline-warning">
-        <i class="bi bi-pencil-square"></i>
-        </Button>
-        <Button variant="outline-danger" onClick={borrarTarea}>
+        <Link className="me-1 btn btn-outline-warning" to={"/editar"}>
+          <i className="bi bi-pencil-square"></i>
+        </Link>
+        <Link className="btn btn-outline-danger" onClick={borrarTarea}>
           <i className="bi bi-trash3-fill"></i>
-        </Button>
+        </Link>
       </div>
     </ListGroup.Item>
   );

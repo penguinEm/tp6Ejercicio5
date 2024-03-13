@@ -41,3 +41,6 @@ export const borrarTareaApi = async (id) => {
     console.log("Error en el CREATE de la tarea");
   }
 };
+
+//! PUT para editar 1 tarea
+
