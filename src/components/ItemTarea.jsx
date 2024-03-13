@@ -51,7 +51,7 @@ const ItemTarea = ({ tarea, setTareas }) => {
       {tarea.nombreTarea}
       <div>
         <Button className="me-1" variant="outline-warning">
-          <i className="bi bi-gear-fill"></i>
+        <i class="bi bi-pencil-square"></i>
         </Button>
         <Button variant="outline-danger" onClick={borrarTarea}>
           <i className="bi bi-trash3-fill"></i>
