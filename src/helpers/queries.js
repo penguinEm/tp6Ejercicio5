@@ -1,6 +1,6 @@
 const URI_TAREAS = import.meta.env.VITE_API_TAREAS;
 
-//! GET para leer todas las tareas (array de objetos del db.json)
+//! 1. GET para leer todas las tareas (array de objetos del db.json)
 
 export const leerTareasApi = async () => {
   try {
@@ -12,7 +12,17 @@ export const leerTareasApi = async () => {
   }
 };
 
-//! POST para crear una tarea nueva
+//! 4. GET de 1 tarea para el edit
+export const leer1TareaApi = async (id) => {
+  try {
+    const respuesta = await fetch(`${URI_TAREAS}/${id}`);
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//! 2. POST para crear una tarea nueva
 
 export const crearTareaApi = async (tareaNueva) => {
   try {
@@ -29,7 +39,7 @@ export const crearTareaApi = async (tareaNueva) => {
   }
 };
 
-//! DELETE de una tarea por id
+//! 3. DELETE de una tarea por id
 
 export const borrarTareaApi = async (id) => {
   try {
@@ -44,3 +54,17 @@ export const borrarTareaApi = async (id) => {
 
 //! PUT para editar 1 tarea
 
+export const editarTareaApi = async (id, tarea) => {
+  try {
+    const respuesta = await fetch(`${URI_TAREAS}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(tarea),
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+  }
+};
