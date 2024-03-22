@@ -43,7 +43,7 @@ const FormularioTareas = ({ editar, btnTexto }) => {
     const respuesta = await leer1TareaApi(id);
     if (respuesta.status === 200) {
       const tareaBuscada = await respuesta.json();
-      setValue("nombreTarea", tareaBuscada.nombreTarea);
+      setValue("nombreTarea", tareaBuscada.mensaje.nombreTarea);
     } else {
       Swal.fire({
         title: "Oops",
