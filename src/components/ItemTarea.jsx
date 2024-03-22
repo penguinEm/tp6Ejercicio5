@@ -25,7 +25,7 @@ const ItemTarea = ({ tarea, setTareas }) => {
       cancelButtonText: "Cancelar",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const respuesta = await borrarTareaApi(tarea.id);
+        const respuesta = await borrarTareaApi(tarea._id);
         if (respuesta.status === 200) {
           setTareas(await leerTareasApi());
           Swal.fire({
@@ -52,7 +52,7 @@ const ItemTarea = ({ tarea, setTareas }) => {
       <div>
         <Link
           className="me-1 btn btn-outline-warning"
-          to={`editar/${tarea.id}`}
+          to={`editar/${tarea._id}`}
         >
           <i className="bi bi-pencil-square"></i>
         </Link>
