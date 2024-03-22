@@ -1,47 +1,44 @@
-## Quinta práctica con React: Lista de Tareas en localStorage
+# Frontend del CRUD de Lista de Tareas
 
-En esta quinta práctica de React, se mejoró la aplicación de lista de tareas para permitir el almacenamiento de tareas en el localStorage. Ahora, las tareas se mantendrán incluso después de cerrar o recargar la página.
+Este proyecto consiste en la parte frontend de la práctica de una lista de tareas. Utiliza React.js con diversas bibliotecas y herramientas para construir una interfaz de usuario dinámica e interactiva. Este proyecto se desarrollo principalmente utilizando **[react](https://www.npmjs.com/package/react):** Biblioteca JavaScript para construir interfaces de usuario.
 
-## Características Principales
+![alt text](1.png)
 
-- Persistencia de Datos: Las tareas se almacenan en el localStorage, lo que garantiza que la lista se conserve entre sesiones.
+## Descripción del CRUD de Lista de Tareas
 
-- Gestión de Tareas Mejorada: Añade, elimina y visualiza tareas de manera eficiente y persistente.
+El frontend de esta aplicación implementa un sistema CRUD (Crear, Leer, Actualizar, Eliminar) para gestionar una lista de tareas. Utiliza solicitudes Fetch para comunicarse con el backend, permitiendo al usuario realizar las siguientes operaciones:
 
-## Modificaciones en la Aplicación
+- **Crear Tarea:** Permite al usuario agregar una nueva tarea a la lista.
+- **Leer Tareas:** Muestra la lista completa de tareas almacenadas en el backend.
+- **Actualizar Tarea:** Permite al usuario editar una tarea existente.
+- **Eliminar Tarea:** Permite al usuario eliminar una tarea de la lista.
+Estas operaciones se realizan mediante solicitudes HTTP al backend, que gestiona la lógica y la persistencia de los datos en la base de datos.
 
-Se implementó la funcionalidad de almacenamiento en el localStorage para mantener la persistencia de las tareas.
-Se agregaron los componentes Navbar y Footer utilizando react-bootstrap y fontawesome.
-
-- **Bootstrap y React-Bootstrap:** Utilizados para estilizar y estructurar la interfaz de usuario de la aplicación de manera eficiente y responsiva.
-
-- **FontAwesome:** Se incorporó FontAwesome para agregar iconos a la interfaz de usuario, proporcionando una experiencia visual mejorada.
-
-- **React:** El proyecto se basa en el framework de trabajo React, permitiendo un desarrollo eficiente y una interfaz de usuario dinámica.
+![alt text](2.png) ![alt text](3.png)
 
 
+## Demo
 
-## Dependencias Instaladas
-- [Documentación React-bootstrap](https://react-bootstrap.github.io/docs/getting-started/introduction)
-- [Documentación React-Fontawesome](https://fontawesome.com/v5/docs/web/use-with/react)
-
-
-- Copiar y pegar los siguientes comandos en el bash y luego realziar los imports:
->npm install --save @fortawesome/fontawesome-free@6.5.1
->npm i --save @fortawesome/fontawesome-svg-core
->npm install --save @fortawesome/free-solid-svg-icons
->npm install --save @fortawesome/react-fontawesome
->npm install react-bootstrap bootstrap
-
-## Imports de las depdendencias (Main.jsx)
-
-import "bootstrap/dist/css/bootstrap.min.css";
-import "@fortawesome/fontawesome-free/css/all.css";
-
-# React + Vite
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refreshsh
+Puedes ver una demostración del proyecto en el siguiente enlace: [Demo](https://lista-tareas-c76i.netlify.app/)
 
 
-<!-- npx json-server db.json -->
+## Dependencias Utilizadas
+
+- **[@fortawesome/free-solid-svg-icons](https://www.npmjs.com/package/@fortawesome/free-solid-svg-icons):** Proporciona iconos de FontAwesome para la interfaz de usuario.
+- **[bootstrap](https://www.npmjs.com/package/bootstrap):** Framework CSS para estilizar la aplicación.
+- **[bootstrap-icons](https://www.npmjs.com/package/bootstrap-icons):** Proporciona iconos de Bootstrap para la interfaz de usuario.
+- **[react-bootstrap](https://www.npmjs.com/package/react-bootstrap):** Implementa los componentes de Bootstrap en React.
+- **[react-dom](https://www.npmjs.com/package/react-dom):** Proporciona el DOM virtual de React para renderizar componentes.
+- **[react-hook-form](https://www.npmjs.com/package/react-hook-form):** Librería para manejar formularios en React.
+- **[react-router-dom](https://www.npmjs.com/package/react-router-dom):** Biblioteca de enrutamiento para React.
+- **[sweetalert2](https://www.npmjs.com/package/sweetalert2):** Biblioteca para mostrar ventanas modales en la aplicación.
+
+Para instalar todas las dependencias del proyecto, ejecuta el siguiente comando desde la terminal, en la raíz de tu proyecto:
+
+```bash
+npm install @fortawesome/free-solid-svg-icons bootstrap bootstrap-icons react react-bootstrap react-dom react-hook-form react-router-dom sweetalert2
+```
+## Repositorios
+
+- [Backend CRUD de Tareas](https://github.com/penguinEm/Tp7_backendListaDeTareas.git): Enlace al repositorio del backend.
+- [Frontend](https://github.com/penguinEm/tp6Ejercicio5.git): Enlace al repositorio del frontend.
