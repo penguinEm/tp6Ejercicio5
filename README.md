@@ -28,7 +28,6 @@ Puedes ver una demostración del proyecto en el siguiente enlace: [Demo](https:/
 - **[bootstrap](https://www.npmjs.com/package/bootstrap):** Framework CSS para estilizar la aplicación.
 - **[bootstrap-icons](https://www.npmjs.com/package/bootstrap-icons):** Proporciona iconos de Bootstrap para la interfaz de usuario.
 - **[react-bootstrap](https://www.npmjs.com/package/react-bootstrap):** Implementa los componentes de Bootstrap en React.
-- **[react-dom](https://www.npmjs.com/package/react-dom):** Proporciona el DOM virtual de React para renderizar componentes.
 - **[react-hook-form](https://www.npmjs.com/package/react-hook-form):** Librería para manejar formularios en React.
 - **[react-router-dom](https://www.npmjs.com/package/react-router-dom):** Biblioteca de enrutamiento para React.
 - **[sweetalert2](https://www.npmjs.com/package/sweetalert2):** Biblioteca para mostrar ventanas modales en la aplicación.
