@@ -8,8 +8,8 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar></Navbar>
-      <Container className="my-5 main">
-        <h1 className="text-center display-3 color-titulo my-5">
+      <Container className="mt-5 mb-0 pb-0 main">
+        <h1 className="text-center display-3 color-titulo mt-5 mb-0 pb-0 titulo">
           Lista de Tareas
         </h1>
       </Container>

@@ -36,3 +36,10 @@
 .main {
   flex-grow: 1;
 }
+
+@media screen and (max-width: 992px) {
+  .contenedor-form {
+    padding-bottom: 50%;
+  }
+  
+}

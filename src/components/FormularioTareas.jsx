@@ -104,7 +104,7 @@ const FormularioTareas = ({ editar, btnTexto }) => {
 
   //! MAQUETADO Y LOG EXTRA ------------------------------------------------------------------------------------------------------
   return (
-    <section className="rounded-5 pt-5 border border-info px-lg-5 px-md-5 px-sm-1 container mb-5">
+    <section className="rounded-5 pt-5  border border-info px-lg-5 px-md-5 px-sm-1 container mb-5 contenedor-form">
       <Form onSubmit={handleSubmit(tareaValidada)}>
         <FormText className="text-danger ms-3">
           {errors.nombreTarea?.message}
